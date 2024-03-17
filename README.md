@@ -1,4 +1,7 @@
 # translate
+#
+##https://www.npmjs.com/package/countapi-js
+#https://countapi.xyz/
 
 Create a counter and restrict its operations    إنشاء عداد وتقييد عملياته
 --------------------------------------------------------------------
@@ -86,14 +89,45 @@ https://mysite.com/news/local
 :PATHNAME: will be replaced with examplepage :HOST: سيتم استبداله بـ mysite.com
 :PATHNAME: سيتم استبداله بصفحة المثال
 -----------------------------------------------------------------------------
+Note: Reserved words are padded with dots if their length is less than three.  ملاحظة: يتم تعبئة الكلمات المحجوزة بالنقاط (.) إذا كان طولها أقل من ثلاثة أحرف.
+-----------------------------------------------------------------------------
+padded  حشو,تعبئة,تبطين
+-----------------------------------------------------------------------------
+Important: if you want to know the actual key used you can check the X-Path header.
+هام: إذا كنت تريد معرفة المفتاح الفعلي المستخدم، فيمكنك التحقق من رأس X-Path
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Multiple pages
+If you want to have a counter for each individual page you can replace visits with a unique identifier for each page, i.e. index, contact, item-1234. Check the right format a key must have.
 
+Alternatively, you can use some reserved words that are replaced server-side.
+For example, if a request is made from https://mysite.com/example/page:
+
+:HOST: will be replaced with mysite.com
+:PATHNAME: will be replaced with examplepage
+
+Note: Reserved words are padded with dots if their length is less than three.
+So you could use something like:
+
+https://api.countapi.xyz/hit/mysite.com/:PATHNAME:
+Or even more generic (though not recommended):
+
+https://api.countapi.xyz/hit/:HOST:/:PATHNAME:
+Important: if you want to know the actual key used you can check the X-Path header.
+
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+هات مثال اخر لنفترض أن لديك موقعين:
+موقعك الرئيسي: https://mysite.com
+موقع فرعي: https://blog.mysite.com
+إذا كنت تريد تتبع عدد الزيارات على الصفحة الرئيسية لكلا الموقعين:
+https://api.countapi.xyz/hit/mysite.com/:PATHNAME::
+يمكنك استخدام هذا الرابط دون أي تغيير، حيث تفترض CountAPI اسم المجال "mysite.com".
+https://api.countapi.xyz/hit/:HOST:/:PATHNAME::
+يمكنك استخدام هذا الرابط، لكن ستحتاج إلى استبدال :HOST: بـ "mysite.com" أو "[تمت إزالة عنوان URL غير صالح]" اعتمادًا على الصفحة التي تتبعها.
+في النهاية، يعتمد اختيار الرابط المناسب على احتياجاتك ومتطلبات موقع الويب الخاص بك.
 -----------------------------------------------------------------------------
 
------------------------------------------------------------------------------
 
------------------------------------------------------------------------------
-
------------------------------------------------------------------------------
 
 -----------------------------------------------------------------------------
 
